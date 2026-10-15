@@ -22,7 +22,12 @@ export interface NotificationPreferences {
   quietHours: QuietHours;
 }
 
+/** Partial update: any subset of channels, each with any subset of categories. */
+export type ChannelPreferencesUpdate = {
+  [C in NotificationChannel]?: Partial<Record<NotificationCategory, boolean>>;
+};
+
 export type SaveNotificationPreferences = {
-  channels?: ChannelPreferences;
+  channels?: ChannelPreferencesUpdate;
   quietHours?: QuietHours;
 };
